@@ -1,113 +1,115 @@
-import Image from 'next/image'
+"use client";
+
+import {
+  useMantineTheme,
+  AppShell,
+  Navbar,
+  Text,
+  MediaQuery,
+  Header,
+  Burger,
+  Group,
+  Avatar,
+  ActionIcon,
+  Center,
+  NavLink,
+} from '@mantine/core';
+import { useState } from 'react';
+import { IconArrowLeft, IconBellRingingFilled, IconBrandTiktoFilled, IconMailFilled, IconGauge, IconFingerprint } from '@tabler/icons-react'
 
 export default function Home() {
+  const theme = useMantineTheme();
+  const [opened, setOpened] = useState(false);
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <AppShell
+      styles={{
+        main: {
+          background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+        }
+      }}
+      layout='alt'
+      navbarOffsetBreakpoint="sm"
+      asideOffsetBreakpoint="sm"
+      navbar={
+        <Navbar styles={{
+          root: {
+            background: theme.colorScheme === 'dark' ? theme.colors.dark[9]: theme.white,
+            boxShadow: theme.shadows.sm,
+          }
+        }} withBorder={false} hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 220 }}>
+          <Navbar.Section>Logo</Navbar.Section>
+          <Navbar.Section grow mt="md">
+            <NavLink
+              label="First parent link"
+              icon={<IconGauge size="1rem" stroke={1.5} />}
+              childrenOffset={28}
+            >
+              <NavLink label="First child link" />
+              <NavLink label="Second child link" />
+              <NavLink label="Nested parent link" childrenOffset={28}>
+                <NavLink label="First child link" />
+                <NavLink label="Second child link" />
+                <NavLink label="Third child link" />
+              </NavLink>
+            </NavLink>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+            <NavLink
+              label="Second parent link"
+              icon={<IconFingerprint size="1rem" stroke={1.5} />}
+              childrenOffset={28}
+              defaultOpened
+            >
+              <NavLink label="First child link" />
+              <NavLink label="Second child link" />
+              <NavLink label="Third child link" />
+            </NavLink>
+          </Navbar.Section>
+          <Navbar.Section>
+            <Center p="sm">
+              <ActionIcon size="md" radius="xl" variant="light">
+                <IconArrowLeft size="1rem" />
+              </ActionIcon>
+            </Center>
+          </Navbar.Section>
+        </Navbar>
+      }
+      header={
+        <Header styles={{
+          root: {
+            background: theme.colorScheme === 'dark' ? theme.colors.dark[9]: theme.white,
+          }
+        }} withBorder={false} height={60}>
+          <Group h={60} p="xs" position="apart">
+            <Group spacing="xs" align='center'>
+              <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+                <Burger
+                  opened={opened}
+                  onClick={() => setOpened((o) => !o)}
+                  size="sm"
+                  color={theme.colors.gray[6]}
+                  mr="xl"
+                />
+              </MediaQuery>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+              <Text>Application header</Text>
+            </Group>
+            <Group spacing="sm">
+              <ActionIcon size="lg" variant="light" radius="xl">
+                <IconBellRingingFilled size="1rem" />
+              </ActionIcon>
+              <ActionIcon size="lg" variant="light" radius="xl">
+                <IconMailFilled size="1rem" />
+              </ActionIcon>
+              <ActionIcon size="lg" variant="light" radius="xl">
+                <IconBrandTiktoFilled size="1rem" />
+              </ActionIcon>
+              <Avatar radius="xl" size="md">U</Avatar>
+            </Group>
+          </Group>
+        </Header>
+      }
+    >
+      <Text>Resize app to see responsive navbar in action</Text>
+    </AppShell>
+  );
 }
