@@ -27,12 +27,12 @@ export default function LeftSideNavbar({
             background:
               theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.white,
             boxShadow: theme.shadows.sm,
-            width: collapse ? "70px" : "200px",
           },
         }}
         withBorder={false}
         hiddenBreakpoint="sm"
         hidden={!opened}
+        width={{ sm: collapse ? 70 : 200, lg: collapse ? 70 : 220 }}
       >
         <Navbar.Section>
           <Logo collapse={collapse} />
