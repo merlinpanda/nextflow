@@ -15,6 +15,7 @@ import {
 } from "@tabler/icons-react";
 import { useState } from "react";
 import { CallbackInterface, LeftSideNormalInterface } from "./interfaces";
+import NotificationCard from "./NotificationCard";
 
 const useStyles = createStyles((theme) => ({}));
 
@@ -53,14 +54,9 @@ export default function PageHeader({
             <Text>Application header</Text>
           </Group>
           <Group spacing="sm">
-            <ActionIcon size="lg" variant="light" radius="xl">
-              <IconBellRingingFilled size="1rem" />
-            </ActionIcon>
+            <NotificationCard />
             <ActionIcon size="lg" variant="light" radius="xl">
               <IconMailFilled size="1rem" />
-            </ActionIcon>
-            <ActionIcon size="lg" variant="light" radius="xl">
-              <IconBrandTiktoFilled size="1rem" />
             </ActionIcon>
             <Avatar radius="xl" size="md">
               U

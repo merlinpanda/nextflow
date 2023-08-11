@@ -16,6 +16,7 @@ export default function RootLayout({
           withCSSVariables
           theme={{
             primaryColor: "blue",
+            colorScheme: "dark"
           }}
         >
           {children}

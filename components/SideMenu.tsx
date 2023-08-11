@@ -6,6 +6,8 @@ import {
   UnstyledButton,
   HoverCard,
   Title,
+  Box,
+  Stack,
 } from "@mantine/core";
 import {
   IconDashboard,
@@ -81,7 +83,7 @@ const useStyles = createStyles((theme) => ({
 
     "&:hover": {
       opacity: 1,
-      color: theme.colorScheme === "dark" ? theme.colors.dark[2] : theme.white,
+      color: theme.white,
       backgroundColor: theme.fn.lighten(
         theme.fn.variant({ variant: "filled", color: theme.primaryColor })
           .background!,
@@ -143,11 +145,20 @@ function CollapsedNavbarLink({
             </UnstyledButton>
           </HoverCard.Target>
           <HoverCard.Dropdown>
-            <Title size={6}>{label}</Title>
-            {children &&
-              children.map((item) => {
-                return renderChildrenNavs(item);
-              })}
+            <Stack spacing="xs">
+              <Title order={6}>{label}</Title>
+              {children &&
+                <Box>
+                  {
+                    children.map((item, index) => {
+                      return (
+                        <RenderChildrenNavs key={index} {...item}/>
+                      )
+                    })
+                  }
+                </Box>
+              }
+            </Stack>
           </HoverCard.Dropdown>
         </HoverCard>
       ) : (
@@ -163,11 +174,20 @@ function CollapsedNavbarLink({
             </UnstyledButton>
           </HoverCard.Target>
           <HoverCard.Dropdown>
-            <Title size={6}>{label}</Title>
-            {children &&
-              children.map((item) => {
-                return renderChildrenNavs(item);
-              })}
+            <Stack spacing="xs">
+              <Title order={6}>{label}</Title>
+              {children &&
+                <Box>
+                  {
+                    children.map((item, index) => {
+                      return (
+                        <RenderChildrenNavs key={index} {...item}/>
+                      )
+                    })
+                  }
+                </Box>
+              }
+            </Stack>
           </HoverCard.Dropdown>
         </HoverCard>
       )}
@@ -175,7 +195,7 @@ function CollapsedNavbarLink({
   );
 }
 
-function renderChildrenNavs({
+function RenderChildrenNavs({
   label,
   href,
   onClick,
@@ -210,8 +230,10 @@ function NotCollapseNavbarLink({
           icon={<Icon size="1rem" stroke={1.5} />}
         >
           {children &&
-            children.map((item) => {
-              return renderChildrenNavs(item);
+            children.map((item, index) => {
+              return (
+                <RenderChildrenNavs key={index} {...item}/>
+              )
             })}
         </NavLink>
       ) : (
@@ -221,8 +243,10 @@ function NotCollapseNavbarLink({
           icon={<Icon size="1rem" stroke={1.5} />}
         >
           {children &&
-            children.map((item) => {
-              return renderChildrenNavs(item);
+            children.map((item, index) => {
+              return (
+                <RenderChildrenNavs key={index} {...item}/>
+              );
             })}
         </NavLink>
       )}
