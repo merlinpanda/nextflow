@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port 4001",
     "build": "next build",
+    "prepare": "husky install",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "lint-staged"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -43,5 +44,12 @@
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6",
     "zustand": "^4.4.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "prettier": "^3.0.1"
   }
 }
