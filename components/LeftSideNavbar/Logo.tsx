@@ -4,7 +4,10 @@ import { LeftSideNormalInterface } from "./interfaces";
 
 const useStyles = createStyles((theme) => ({
   box: {
-    borderBottom: theme.colorScheme === 'dark' ? `1px solid ${theme.colors.dark[5]}` :`1px solid ${theme.colors.gray[2]}`,
+    borderBottom:
+      theme.colorScheme === "dark"
+        ? `1px solid ${theme.colors.dark[5]}`
+        : `1px solid ${theme.colors.gray[2]}`,
     position: "sticky",
     zIndex: 99,
   },

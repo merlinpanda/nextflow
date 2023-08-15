@@ -8,14 +8,10 @@ import {
   ActionIcon,
   Avatar,
 } from "@mantine/core";
-import {
-  IconBellRingingFilled,
-  IconMailFilled,
-  IconBrandTiktoFilled,
-} from "@tabler/icons-react";
-import { useState } from "react";
-import { CallbackInterface, LeftSideNormalInterface } from "./interfaces";
-import NotificationCard from "./NotificationCard";
+import { CallbackInterface, LeftSideNormalInterface } from "../interfaces";
+import NotificationHoverAction from "./Actions/NotificationHoverAction";
+import MailHoverAction from "./Actions/MailHoverAction";
+import { SchemeToggle } from "./Actions/SchemeToggle";
 
 const useStyles = createStyles((theme) => ({}));
 
@@ -23,7 +19,7 @@ export default function PageHeader({
   callback,
   collapse,
 }: CallbackInterface & LeftSideNormalInterface) {
-  const { classes, theme } = useStyles();
+  const { theme } = useStyles();
 
   return (
     <>
@@ -34,7 +30,6 @@ export default function PageHeader({
               theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.white,
           },
         }}
-        withBorder={false}
         height={60}
       >
         <Group h={60} p="xs" position="apart">
@@ -54,10 +49,9 @@ export default function PageHeader({
             <Text>Application header</Text>
           </Group>
           <Group spacing="sm">
-            <NotificationCard />
-            <ActionIcon size="lg" variant="light" radius="xl">
-              <IconMailFilled size="1rem" />
-            </ActionIcon>
+            <NotificationHoverAction />
+            <MailHoverAction />
+            <SchemeToggle />
             <Avatar radius="xl" size="md">
               U
             </Avatar>

@@ -1,14 +1,8 @@
-import {
-  Navbar,
-  createStyles,
-  Center,
-  ActionIcon,
-  NavLinkProps,
-} from "@mantine/core";
+import { Navbar, createStyles, Center, ActionIcon } from "@mantine/core";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { useState } from "react";
 import Logo from "./Logo";
-import { LeftSideNormalInterface } from "./interfaces";
+import { LeftSideNormalInterface } from "../interfaces";
 import SideMenu from "./SideMenu";
 
 const useStyles = createStyles((theme) => ({}));
@@ -17,7 +11,7 @@ export default function LeftSideNavbar({
   collapse: opened,
 }: LeftSideNormalInterface) {
   const { theme } = useStyles();
-  const [collapse, setCollapse] = useState<boolean>(false);
+  const [collapse, setCollapse] = useState<boolean>(true);
 
   return (
     <>

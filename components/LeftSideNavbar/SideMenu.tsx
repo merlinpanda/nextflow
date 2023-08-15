@@ -147,17 +147,13 @@ function CollapsedNavbarLink({
           <HoverCard.Dropdown>
             <Stack spacing="xs">
               <Title order={6}>{label}</Title>
-              {children &&
+              {children && (
                 <Box>
-                  {
-                    children.map((item, index) => {
-                      return (
-                        <RenderChildrenNavs key={index} {...item}/>
-                      )
-                    })
-                  }
+                  {children.map((item, index) => {
+                    return <RenderChildrenNavs key={index} {...item} />;
+                  })}
                 </Box>
-              }
+              )}
             </Stack>
           </HoverCard.Dropdown>
         </HoverCard>
@@ -176,17 +172,13 @@ function CollapsedNavbarLink({
           <HoverCard.Dropdown>
             <Stack spacing="xs">
               <Title order={6}>{label}</Title>
-              {children &&
+              {children && (
                 <Box>
-                  {
-                    children.map((item, index) => {
-                      return (
-                        <RenderChildrenNavs key={index} {...item}/>
-                      )
-                    })
-                  }
+                  {children.map((item, index) => {
+                    return <RenderChildrenNavs key={index} {...item} />;
+                  })}
                 </Box>
-              }
+              )}
             </Stack>
           </HoverCard.Dropdown>
         </HoverCard>
@@ -231,9 +223,7 @@ function NotCollapseNavbarLink({
         >
           {children &&
             children.map((item, index) => {
-              return (
-                <RenderChildrenNavs key={index} {...item}/>
-              )
+              return <RenderChildrenNavs key={index} {...item} />;
             })}
         </NavLink>
       ) : (
@@ -244,9 +234,7 @@ function NotCollapseNavbarLink({
         >
           {children &&
             children.map((item, index) => {
-              return (
-                <RenderChildrenNavs key={index} {...item}/>
-              );
+              return <RenderChildrenNavs key={index} {...item} />;
             })}
         </NavLink>
       )}
