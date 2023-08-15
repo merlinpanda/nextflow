@@ -17,7 +17,7 @@ import {
   IconFingerprint,
   IconSettings,
 } from "@tabler/icons-react";
-import { LeftSideNormalInterface } from "./interfaces";
+import { LeftSideNormalInterface } from "../interfaces";
 import Link from "next/link";
 
 interface NavbarLinkBaseProps {

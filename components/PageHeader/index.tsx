@@ -45,16 +45,13 @@ export default function PageHeader({
                 mr="xl"
               />
             </MediaQuery>
-
             <Text>Application header</Text>
           </Group>
           <Group spacing="sm">
             <NotificationHoverAction />
             <MailHoverAction />
             <SchemeToggle />
-            <Avatar radius="xl" size="md">
-              U
-            </Avatar>
+            <Avatar size="md">U</Avatar>
           </Group>
         </Group>
       </Header>
