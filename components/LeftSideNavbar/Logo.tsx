@@ -1,6 +1,6 @@
 import { Flex, createStyles } from "@mantine/core";
 import { IconBrandOpenai } from "@tabler/icons-react";
-import { LeftSideNormalInterface } from "./interfaces";
+import { LeftSideNormalInterface } from "../Interfaces";
 
 const useStyles = createStyles((theme) => ({
   box: {

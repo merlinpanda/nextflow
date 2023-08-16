@@ -1,8 +1,8 @@
 "use client";
 
 import { Box, Card, Stack } from "@mantine/core";
-import AddCategory from "./components/AddCategory";
-import CategoryTable from "./components/CategoryTable";
+import AddDocument from "./components/AddDocument";
+import DocumentTable from "./components/DocumentTable";
 
 export default function Page() {
   return (
@@ -10,10 +10,10 @@ export default function Page() {
       <Card>
         <Stack>
           <Box>
-            <AddCategory />
+            <AddDocument />
           </Box>
           <Box>
-            <CategoryTable />
+            <DocumentTable />
           </Box>
         </Stack>
       </Card>

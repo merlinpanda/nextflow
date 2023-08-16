@@ -8,7 +8,7 @@ import {
   ActionIcon,
   Avatar,
 } from "@mantine/core";
-import { CallbackInterface, LeftSideNormalInterface } from "../interfaces";
+import { CallbackInterface, LeftSideNormalInterface } from "../Interfaces";
 import NotificationHoverAction from "./Actions/NotificationHoverAction";
 import MailHoverAction from "./Actions/MailHoverAction";
 import { SchemeToggle } from "./Actions/SchemeToggle";

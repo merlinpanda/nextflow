@@ -2,7 +2,7 @@ import { Navbar, createStyles, Center, ActionIcon } from "@mantine/core";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { useState } from "react";
 import Logo from "./Logo";
-import { LeftSideNormalInterface } from "../interfaces";
+import { LeftSideNormalInterface } from "../Interfaces";
 import SideMenu from "./SideMenu";
 
 const useStyles = createStyles((theme) => ({}));
