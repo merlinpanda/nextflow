@@ -60,3 +60,39 @@ export interface DocumentVersion {
   version_number: number;
   changelong?: string;
 }
+
+export interface Country {
+  id: number;
+  zh_ch: string;
+  en_us?: string;
+  iso_code_2?: string;
+  iso_code_3?: string;
+  flag?: string;
+}
+
+export interface User {
+  id: number;
+  nickname: string;
+  avatar: string;
+  email: string;
+  country_id?: number;
+  country?: Country;
+  language_id?: number;
+  language?: Language;
+}
+
+export interface KCard {
+  id: number;
+  code: string;
+  title: string;
+  language?: Language;
+  language_id?: number;
+  user_id?: number;
+  user?: User;
+  content?: string;
+  property?: "PRIVATE" | "PUBLIC";
+  published_at?: string;
+  version?: number;
+  created_at?: string;
+  updated_at?: string;
+}

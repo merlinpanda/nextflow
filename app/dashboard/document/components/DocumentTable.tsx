@@ -34,7 +34,7 @@ export default function DocumentTable() {
       <Table striped highlightOnHover withBorder withColumnBorders>
         <thead>
           <tr>
-            <th style={{ width: "64px" }}>ID</th>
+            <th style={{ width: "44px" }}>ID</th>
             <th style={{ width: "64px" }}>CODE</th>
             <th>文档</th>
             <th style={{ width: "84px" }}>语言</th>
@@ -44,8 +44,8 @@ export default function DocumentTable() {
             <th style={{ width: "64px" }}>开放</th>
             <th style={{ width: "64px" }}>编辑</th>
             <th style={{ width: "64px" }}>Github</th>
-            <th style={{ width: "224px" }}>时间</th>
-            <th style={{ width: "104px" }}>操作</th>
+            <th style={{ width: "164px" }}>时间</th>
+            <th style={{ width: "94px" }}>操作</th>
           </tr>
         </thead>
         <tbody>
