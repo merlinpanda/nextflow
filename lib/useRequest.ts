@@ -25,7 +25,7 @@ const hasError = (error: any) => {
     autoClose: 5000,
     color: "red",
   });
-  return Promise.reject(error);
+  // return Promise.reject(error);
 };
 
 http.interceptors.request.use(beforeRequest, hasError);

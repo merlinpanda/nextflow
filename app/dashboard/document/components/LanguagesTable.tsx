@@ -1,20 +1,20 @@
+import { DocumentLanguage } from "@/components/Interfaces";
 import { fetcher } from "@/lib/useRequest";
-import { ActionIcon, Drawer, useMantineTheme, Table } from "@mantine/core";
+import { ActionIcon, Drawer, Table, useMantineTheme } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { IconArrowRight, IconVersionsFilled } from "@tabler/icons-react";
+import { IconArrowRight, IconLanguage } from "@tabler/icons-react";
 import { useState } from "react";
-import { DocumentVersion } from "@/components/Interfaces";
 import { preload } from "swr";
 
-export default function Versions({ code }: { code: string }) {
+export default function LanguagesTable({ code }: { code: string }) {
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
-  const [versions, setVersions] = useState<DocumentVersion[]>([]);
+  const [languages, setVersions] = useState<DocumentLanguage[]>([]);
 
   const openAndLoad = () => {
     open();
-    preload("/apis/document/" + code + "/versions", fetcher).then((value) => {
-      setVersions(value.data);
+    preload("/apis/document/" + code + "/languages", fetcher).then((value) => {
+      setVersions(value?.data || []);
     });
   };
 
@@ -23,7 +23,7 @@ export default function Versions({ code }: { code: string }) {
       <Drawer
         opened={opened}
         onClose={close}
-        title="文档版本"
+        title="文档语言"
         position="right"
         overlayProps={{
           color:
@@ -38,18 +38,16 @@ export default function Versions({ code }: { code: string }) {
           <thead>
             <tr>
               <th>版本</th>
-              <th>版本号</th>
               <th>整理进度</th>
               <th>操作</th>
             </tr>
           </thead>
           <tbody>
-            {versions &&
-              versions.map((version, index) => {
+            {languages &&
+              languages.map((language, index) => {
                 return (
                   <tr key={index}>
-                    <td>{version.version_name}</td>
-                    <td>{version.version_number}</td>
+                    <td>{language.name}</td>
                     <td>20%</td>
                     <td>
                       <ActionIcon>
@@ -64,7 +62,7 @@ export default function Versions({ code }: { code: string }) {
       </Drawer>
 
       <ActionIcon radius="xl" onClick={openAndLoad} size="xs" variant="light">
-        <IconVersionsFilled size="1rem" />
+        <IconLanguage size="1rem" />
       </ActionIcon>
     </>
   );

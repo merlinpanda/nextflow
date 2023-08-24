@@ -7,13 +7,19 @@ import {
   Anchor,
   ActionIcon,
   Group,
+  Badge,
+  CopyButton,
+  Tooltip,
 } from "@mantine/core";
 import useSWR from "swr";
 import { fetcher } from "@/lib/useRequest";
 import {
   IconBrandGithub,
+  IconCheck,
   IconChecks,
+  IconCopy,
   IconInfoCircle,
+  IconLanguage,
   IconLock,
   IconLockOpen,
   IconMinus,
@@ -21,6 +27,8 @@ import {
 } from "@tabler/icons-react";
 import Link from "next/link";
 import EditDocument from "./EditDocument";
+import Versions from "./Versions";
+import LanguagesTable from "./LanguagesTable";
 
 export default function DocumentTable() {
   const { data, error, isLoading } = useSWR("/apis/documents", fetcher, {
@@ -37,15 +45,12 @@ export default function DocumentTable() {
             <th style={{ width: "44px" }}>ID</th>
             <th style={{ width: "64px" }}>CODE</th>
             <th>文档</th>
-            <th style={{ width: "84px" }}>语言</th>
             <th style={{ width: "64px" }}>官网</th>
-            <th style={{ width: "64px" }}>完成</th>
-            <th style={{ width: "64px" }}>发布</th>
             <th style={{ width: "64px" }}>开放</th>
             <th style={{ width: "64px" }}>编辑</th>
             <th style={{ width: "64px" }}>Github</th>
             <th style={{ width: "164px" }}>时间</th>
-            <th style={{ width: "94px" }}>操作</th>
+            <th style={{ width: "124px" }}>操作</th>
           </tr>
         </thead>
         <tbody>
@@ -54,37 +59,49 @@ export default function DocumentTable() {
               return (
                 <tr key={index}>
                   <td>{item.id}</td>
-                  <td>{item.code}</td>
+                  <td>
+                    <Badge
+                      size="xs"
+                      color="gray"
+                      tt="revert"
+                      fw={400}
+                      pr={1}
+                      rightSection={
+                        <CopyButton value={item.code} timeout={2000}>
+                          {({ copied, copy }) => (
+                            <Tooltip
+                              label={copied ? "Copied" : "Copy"}
+                              withArrow
+                              position="right"
+                            >
+                              <ActionIcon
+                                variant="transparent"
+                                size="xs"
+                                radius="xl"
+                                color={copied ? "teal" : "gray"}
+                                onClick={copy}
+                              >
+                                {copied ? (
+                                  <IconCheck size="1rem" />
+                                ) : (
+                                  <IconCopy size="1rem" />
+                                )}
+                              </ActionIcon>
+                            </Tooltip>
+                          )}
+                        </CopyButton>
+                      }
+                    >
+                      {item.code}
+                    </Badge>
+                  </td>
                   <td>{item.title}</td>
-                  <td>{item?.language?.name_zh}</td>
                   <td>
                     <Anchor href={item.origin_url} target="_blank">
                       <ThemeIcon size="xs" radius="xl" color="blue">
                         <IconWorld size="0.8rem" stroke={2.5} />
                       </ThemeIcon>
                     </Anchor>
-                  </td>
-                  <td>
-                    {item.finished ? (
-                      <ThemeIcon radius="xl" size="xs" color="green">
-                        <IconChecks size="1rem" />
-                      </ThemeIcon>
-                    ) : (
-                      <ThemeIcon radius="xl" size="xs" color="gray">
-                        <IconMinus size="1rem" />
-                      </ThemeIcon>
-                    )}
-                  </td>
-                  <td>
-                    {item.is_published ? (
-                      <ThemeIcon radius="xl" size="xs" color="green">
-                        <IconChecks size="1rem" />
-                      </ThemeIcon>
-                    ) : (
-                      <ThemeIcon radius="xl" size="xs" color="gray">
-                        <IconMinus size="1rem" />
-                      </ThemeIcon>
-                    )}
                   </td>
                   <td>
                     <Switch
@@ -126,6 +143,8 @@ export default function DocumentTable() {
                         <IconInfoCircle size="1rem" />
                       </ActionIcon>
                       <EditDocument code={item.code} />
+                      <Versions code={item.code} />
+                      <LanguagesTable code={item.code} />
                     </Group>
                   </td>
                 </tr>

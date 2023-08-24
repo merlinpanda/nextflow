@@ -61,6 +61,12 @@ export interface DocumentVersion {
   changelong?: string;
 }
 
+export interface DocumentLanguage {
+  name: string;
+  iso_code: string;
+  progress: number;
+}
+
 export interface Country {
   id: number;
   zh_ch: string;

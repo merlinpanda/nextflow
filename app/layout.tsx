@@ -5,7 +5,10 @@ import {
   ColorSchemeProvider,
   ColorScheme,
 } from "@mantine/core";
+import { notifications } from "@mantine/notifications";
+import { IconX } from "@tabler/icons-react";
 import { useState } from "react";
+import { SWRConfig } from "swr";
 
 export default function RootLayout({
   children,
@@ -25,17 +28,32 @@ export default function RootLayout({
           colorScheme={colorScheme}
           toggleColorScheme={toggleScheme}
         >
-          <MantineProvider
-            withGlobalStyles
-            withNormalizeCSS
-            withCSSVariables
-            theme={{
-              primaryColor: "blue",
-              colorScheme: colorScheme,
+          <SWRConfig
+            value={{
+              onError: (error, key) => {
+                if (error.status != 404) {
+                  notifications.show({
+                    title: "Error",
+                    message: error.message,
+                    color: "red",
+                    icon: <IconX size="1.1rem" />,
+                  });
+                }
+              },
             }}
           >
-            {children}
-          </MantineProvider>
+            <MantineProvider
+              withGlobalStyles
+              withNormalizeCSS
+              withCSSVariables
+              theme={{
+                primaryColor: "blue",
+                colorScheme: colorScheme,
+              }}
+            >
+              {children}
+            </MantineProvider>
+          </SWRConfig>
         </ColorSchemeProvider>
       </body>
     </html>
