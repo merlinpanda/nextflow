@@ -31,7 +31,7 @@ import Versions from "./Versions";
 import LanguagesTable from "./LanguagesTable";
 import CategoryLabel from "@/components/Category/CategoryLabel";
 
-export default function DocumentTable() {
+export default function DocumentGroupTable() {
   const { data, error, isLoading } = useSWR("/apis/document_groups", fetcher, {
     revalidateOnFocus: false,
     revalidateIfStale: false,
@@ -114,7 +114,7 @@ export default function DocumentTable() {
                       <Tooltip label="详情" position="top" withArrow>
                         <ActionIcon
                           component={Link}
-                          href={"/dashboard/document/" + item.code}
+                          href={"/dashboard/document_group/" + item.code}
                           size="xs"
                           radius="xl"
                           variant="light"

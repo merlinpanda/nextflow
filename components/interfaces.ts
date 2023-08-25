@@ -8,14 +8,15 @@ export interface CallbackInterface {
 
 export interface CategoryItem {
   id: number;
-  altitude: number;
-  document_id: number;
-  intro: string;
+  altitude?: number;
+  document_id?: number;
+  intro?: string;
   code: string;
   title: string;
-  type: string;
-  type_text: string;
+  type?: string;
+  type_text?: string;
   pid?: number;
+  thumb?: string;
   created_at: string;
   updated_at: string;
   deleted_at?: string;
@@ -28,6 +29,20 @@ export interface Language {
   name_zh: string;
   iso_code: string;
   direction: string;
+}
+
+export interface DocumentGroupItem {
+  id: number;
+  code: string;
+  title: string;
+  category?: CategoryItem;
+  categories?: CategoryItem[];
+  default_language?: Language;
+  web_url?: string;
+  github?: string;
+  created_at?: string;
+  updated_at?: string;
+  deleted_at?: string;
 }
 
 export interface DocumentItem {
@@ -62,8 +77,7 @@ export interface DocumentVersion {
 }
 
 export interface DocumentLanguage {
-  name: string;
-  iso_code: string;
+  language: Language;
   progress: number;
 }
 

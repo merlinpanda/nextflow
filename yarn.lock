@@ -461,12 +461,12 @@
   dependencies:
     "@mantine/utils" "6.0.19"
 
-"@mantine/dropzone@^6.0.18":
-  version "6.0.18"
-  resolved "https://registry.npmmirror.com/@mantine/dropzone/-/dropzone-6.0.18.tgz#a7f69a9ff52bbfd443fc04cdf02851969850439f"
-  integrity sha512-STxlkgSUELXSp9HUfKyMdI4QeNsKkpBKgyzzmrKq/jvGEQh6gWZ8PdO2uBR9i/QzK0TmC4ppjFytC9inIBVefw==
+"@mantine/dropzone@^6.0.19":
+  version "6.0.19"
+  resolved "https://registry.npmmirror.com/@mantine/dropzone/-/dropzone-6.0.19.tgz#84ae425161fcaf5cbcbdf98ee5e9f71a2c63e0cd"
+  integrity sha512-riftzhsXSe84oUHIzMsANtJSIINT08N8ycUuGFxGStf+ytVUZn7TommITnifEEokY6iu4yxjv27FK8maaB1BHA==
   dependencies:
-    "@mantine/utils" "6.0.18"
+    "@mantine/utils" "6.0.19"
     react-dropzone "14.2.3"
 
 "@mantine/form@^6.0.19":
